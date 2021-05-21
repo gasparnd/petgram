@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Category } from '../Category'
 
 import { List, Item } from './styles'
 
-import { categories } from '../../../api/db.json'
-
 export const ListOfCategories = () => {
+  const [ categories, setCategories ] = useState([])
+
+  useEffect(() => {
+    const API_URL = 'https://petgram-server-gasparnd.vercel.app'
+
+    fetch(`${API_URL}/categories`)
+      .then( res => res.json())
+      .then( data => setCategories(data))
+      .catch( err => console.log(`Fetch error: ${err}`))
+  },[])
   return(
   	<List>
   	  {
