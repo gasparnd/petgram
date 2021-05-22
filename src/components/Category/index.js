@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Image, Anchor, Loader } from './styles'
+import { Image, Link, Loader } from './styles'
 
 const DEFAULT_IMAGE = 'https://i.imgur.com/dJa0Hpl.jpg'
 
@@ -11,9 +11,9 @@ export const Category = ({ cover = DEFAULT_IMAGE, route, emoji = '💫', loading
 	}
 
 	return(
-      <Anchor href={route}>
+      <Link to={route}>
   	    <Image src={cover} />
   	    { emoji }
-      </Anchor>
+      </Link>
 	)
 }

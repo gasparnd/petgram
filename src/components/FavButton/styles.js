@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
+  cursor: pointer;
   display: flex;
   background-color: transparent;
   border: transparent;

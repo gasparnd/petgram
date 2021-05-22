@@ -1,9 +1,9 @@
 import React from 'react'
-import { PhotoCard } from '../components/PhotoCard'
-import { LoaderComponent } from '../components/Loader'
 
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
+
+import { PhotoCard } from '../components/PhotoCard'
 
 const GET_SINGLE_PHOTO = gql`
   query getSinglePhoto($id:ID!) {
@@ -20,7 +20,7 @@ const GET_SINGLE_PHOTO = gql`
 
 const renderProp = ({ loading, error, data }) => {
   if(loading) {
-  	return <LoaderComponent /> 
+  	return <PhotoCard loading={loading} /> 
   }
   const { photo = {} } = data
   return <PhotoCard {...photo} /> 
