@@ -12,6 +12,16 @@ const fadeInKeyFrames = keyframes`
   }
 `
 
+const loaderKeyFrame = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+`
+
 const bounceDownKeyFrames = keyframes`
  0% {
     top: -70px;
@@ -41,3 +51,7 @@ export const bounceDown = ({ time = '1s', type = 'ease' } = {}) => (
 export const fadeIn = ({ time = '1s', type = 'ease'} = {}) => (
   css`animation: ${time} ${fadeInKeyFrames} ${type};`
 )
+
+export const loader = ({ time = '100000s', type = 'ease'} = {}) => {
+  css`animation: ${loaderKeyFrame}`
+}

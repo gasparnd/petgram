@@ -48,7 +48,7 @@ export const ListOfCategories = () => {
   	  {
         loading
         ? <Item key='loading'>
-            <Category />
+            <Category loading={loading} />
           </Item>
   	  	: categories.map( category => (
   	  	  <Item key={category.id}>

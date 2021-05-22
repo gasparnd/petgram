@@ -16,3 +16,11 @@ export const Image = styled.img`
   height: 75px;
   width: 75px;
 `
+
+export const Loader = styled.div`
+  border-radius: 50%;
+  background: #ddd;
+  object-fit: cover;
+  height: 75px;
+  width: 75px;
+`

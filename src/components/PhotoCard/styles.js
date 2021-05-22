@@ -25,14 +25,10 @@ export const Img = styled.img`
   top: 0;
   width: 100%;
 `
-
-export const Button = styled.button`
-  display: flex;
-  background-color: transparent;
-  border: transparent;
-  align-items: center;
-  padding: .7rem 0 1rem;
-  & svg {
-  	margin-right: 4px;
-  }
+export const Loader = styled.div`
+  background: #dddddd;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 200px;
 `
