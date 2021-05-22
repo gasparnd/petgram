@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { useNearScreen } from '../../hooks/useNearScreen'
+
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { Article, ImgWrapper, Img, Button } from './styles'
 
@@ -7,48 +10,10 @@ const DEFAULT_PHOTO = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_8
 
 export const PhotoCard = ({ id, likes = 0, src = DEFAULT_PHOTO}) => {
   const key = `like-${id}`
-
-  const ref = useRef(null)
-  const [ show, setShow ] = useState(false)
-  const [ liked, setLiked ] = useState(() => {
-    try {
-      const like = window.localStorage.getItem(key)
-      return like
-    } catch(err) {
-      return false
-    }
-  })
-
-  useEffect(() => {
-    Promise.resolve(
-      typeof window.IntersectionObserver !== 'undefined'
-        ? window.IntersectionObserver
-        : import('intersection-observer') 
-
-    ).then( () => {
-
-      const observer = new IntersectionObserver( entries => {
-        const { isIntersecting } = entries[0]
-        if(isIntersecting) {
-          setShow(true)
-          observer.disconnect()
-        }
-      })
-      observer.observe(ref.current) 
-    })
-    
-  }, [ref])
+  const [ show, ref ] = useNearScreen()
+  const [liked, setLiked] = useLocalStorage(key, false)
 
   const LikedIcon = liked ? MdFavorite : MdFavoriteBorder
-
-  const setLocalStorage = value => {
-    try {
-      window.localStorage.setItem(key, value)
-      setLiked(value)
-    } catch(err) {
-      console.log(`Faild save data on local storage: ${err}`)
-    }
-  }
 
   return(
     <Article ref={ref}>
@@ -60,7 +25,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_PHOTO}) => {
        		  <Img src={src} />
        		</ImgWrapper>
           </a>
-          <Button type="button" onClick={ () => setLocalStorage(!liked)}>
+          <Button type="button" onClick={ () => setLiked(!liked)}>
             <LikedIcon size='32px' />
             { likes } likes!
           </Button>
