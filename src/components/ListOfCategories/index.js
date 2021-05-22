@@ -42,7 +42,6 @@ export const ListOfCategories = () => {
 
     return () => document.removeEventListener('scroll', onScroll)
   }, [showFixed])
-
   const renderList = fixed => (
   	<List fixed={fixed}>
   	  {
@@ -51,10 +50,10 @@ export const ListOfCategories = () => {
             <Category loading={loading} />
           </Item>
   	  	: categories.map( category => (
-  	  	  <Item key={category.id}>
-  	  	    <Category {...category}/>
-  	  	  </Item>
-  	  	))
+  	  	    <Item key={category.id}>
+  	  	      <Category route={`/pet/${category.id}`} {...category}/>
+  	  	    </Item>
+  	  	  ))
   	  }
   	</List>
   )

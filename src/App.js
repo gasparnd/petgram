@@ -1,8 +1,8 @@
 import React from 'react'
+import { Router } from '@reach/router'
 
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCards } from './containers/ListOfPhotoCards'
 import { PhotoCardWithQuery } from './containers/PhotoCardWithQuery'
+import { Home } from './pages/Home'
 
 import { GlobalStyles } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
@@ -19,10 +19,10 @@ export const App = () => {
         {
           detailId  
             ? <PhotoCardWithQuery id={detailId} />
-            : <>
-                <ListOfCategories />
-                <ListOfPhotoCards />
-              </>
+            : <Router>
+                <Home path='/' />
+                <Home path='/pet/:id' />
+              </Router>
         }
   	  </GlobalWrapper>
   	</>
