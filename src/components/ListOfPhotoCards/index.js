@@ -2,9 +2,8 @@ import React from 'react'
 
 import { PhotoCard } from '../PhotoCard'
 
-import { photos } from '../../../api/db.json'
-
-export const ListOfPhotoCards = () => {
+export const ListOfPhotoCardsComponent = ({ data: { photos = [], loading }} = {}) => {
+  console.log(photos, loading)
   return(
     <ul>
       {
