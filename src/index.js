@@ -10,14 +10,22 @@ const client = new ApolloClient({
   uri: 'https://petgram-server-gasparnd.vercel.app/graphql',
   request: operation => {
     const token = window.sessionStorage.getItem('token')
-  	const ahutorization = token ? `Bearer ${token}` : ''
-  	operation.setContext({
+    const authorization = token ? `Bearer ${token}` : ''
+    operation.setContext({
       headers: {
-      	ahutorization
+        authorization
       }
-  	})
+    })
+  },
+  onError: error => {
+    const { networkError } = error
+    if (networkError && networkError.result.code === 'invalid_token') {
+      window.sessionStorage.removeItem('token')
+      window.location.href = '/'
+    }
   }
 })
+
 
 ReactDOM.render(
   <Context.Provider>

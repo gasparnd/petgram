@@ -14,7 +14,7 @@ const LIKE_PHOTO = gql`
 
 export const ToggleLikeMutation = ({ children }) => {
 	return(
-      <Mutation mutation={LIKE_PHOTO} >
+    <Mutation mutation={LIKE_PHOTO} >
 	    { children }
 	  </Mutation>
 	)

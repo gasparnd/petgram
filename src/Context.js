@@ -8,7 +8,7 @@ const Provider = ({ children }) => {
 
   const value = {
     isAuth,
-    activateAuth: ({ token }) => {
+    activateAuth: (token) => {
       setIsAuth(true)
       window.sessionStorage.setItem('token', token)
     }
