@@ -24,20 +24,22 @@ export const App = () => {
   return(
   	<>
   	  <GlobalStyles />
-  	  <Logo />
-      <Router>
-        <NotFound default />
-        <Home path='/' />
-        <Home path='/pet/:id' />
-        <Detail path='/detail/:detailId' />
-        {!isAuth && <NotRegisterUser path='/login' />}
-        {!isAuth && <Redirect noThrow from='/favs' to='/login' />}
-        {!isAuth && <Redirect noThrow from='/user' to='/login' />}
-        {isAuth && <Redirect noThrow from='/login' to='/' />}
-        <Favs path='/favs' />
-        <User path='/user' />
-      </Router>
-      <NavBar />
+      <GlobalWrapper>
+  	    <Logo />
+        <Router>
+          <NotFound default />
+          <Home path='/' />
+          <Home path='/pet/:id' />
+          <Detail path='/detail/:detailId' />
+          {!isAuth && <NotRegisterUser path='/login' />}
+          {!isAuth && <Redirect noThrow from='/favs' to='/login' />}
+          {!isAuth && <Redirect noThrow from='/user' to='/login' />}
+          {isAuth && <Redirect noThrow from='/login' to='/' />}
+          <Favs path='/favs' />
+          <User path='/user' />
+        </Router>
+        <NavBar />
+      </GlobalWrapper>
   	</>
   )
 }
