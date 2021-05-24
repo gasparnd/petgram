@@ -1,5 +1,6 @@
 import React from 'react'
 import { Router } from '@reach/router'
+import Context from './Context'
 
 import { Home } from './pages/Home'
 import { Detail } from './pages/Detail'
@@ -21,7 +22,6 @@ export const App = () => {
   return(
   	<>
   	  <GlobalStyles />
-  	  <GlobalWrapper>
   	    <Logo />
         <Router>
           <Home path='/' />
@@ -29,7 +29,7 @@ export const App = () => {
           <Detail path='/detail/:detailId' />
         </Router>
 
-        <UserLogged>
+        <Context.Consumer>
           {
             ({ isAuth }) => isAuth 
               ? <Router>
@@ -41,8 +41,7 @@ export const App = () => {
                   <NotRegisterUser path='/user' />
                 </Router>
           }
-        </UserLogged>
-  	  </GlobalWrapper>
+        </Context.Consumer>
       <NavBar />
   	</>
   )

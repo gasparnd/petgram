@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
 
   *, *:before, *:after {
     box-sizing: inherit;
+    font-family: 'Lato', Helvetica;
   }
 
   ul, li, h1, h2, h3, p, button {
