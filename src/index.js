@@ -6,7 +6,7 @@ import Context from './Context'
 
 import { App } from './App.js'
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: 'https://petgram-server-gasparnd.vercel.app/graphql',
   request: operation => {
     const token = window.sessionStorage.getItem('token')

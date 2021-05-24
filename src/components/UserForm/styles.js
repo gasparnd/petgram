@@ -44,7 +44,7 @@ export const Input = styled.input`
   margin-bottom: 8px ;
   display: block;
   &:focus {
-  	background-color: #9566e4;
+  	background-color: #eae3f5;
   }
   &[disabled] {
     opacity: .3;

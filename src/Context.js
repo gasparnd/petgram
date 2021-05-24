@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
+import { client } from './index'
 export const Context = createContext()
 
 const Provider = ({ children }) => {
@@ -6,11 +7,20 @@ const Provider = ({ children }) => {
     return window.sessionStorage.getItem('token')
   })
 
+  useEffect(() => {
+    // reset store on auth change
+    client.resetStore()
+  }, [isAuth])
+
   const value = {
     isAuth,
     activateAuth: (token) => {
       setIsAuth(true)
       window.sessionStorage.setItem('token', token)
+    },
+    removeAuth: () => {
+      setIsAuth(false)
+      window.sessionStorage.removeItem('token')
     }
   }
 
