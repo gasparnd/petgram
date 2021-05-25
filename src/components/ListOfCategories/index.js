@@ -29,10 +29,10 @@ const useCategoriesData = props => {
 }
 
 const ListOfCategoriesComponent = () => {
-  const { categories, loading, error } = useCategoriesData()
-  const [ showFixed, setShowFixed ] = useState(false)
+  const { categories, loading } = useCategoriesData()
+  const [showFixed, setShowFixed] = useState(false)
 
-  useEffect(() => {
+  useEffect(function () {
     const onScroll = e => {
       const newShowFixed = window.scrollY > 200
       showFixed !== newShowFixed && setShowFixed(newShowFixed)
@@ -42,6 +42,7 @@ const ListOfCategoriesComponent = () => {
 
     return () => document.removeEventListener('scroll', onScroll)
   }, [showFixed])
+
   const renderList = fixed => (
   	<List fixed={fixed}>
   	  {

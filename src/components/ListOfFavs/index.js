@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 import { Grid, Link, Image } from './styles'
 
-export const ListOfFavs = ({ favs = [] }) => (
+export const ListOfFavs = ({ favs }) => (
   <Grid>
     {
-      favs.lenght === 0 
+      favs.length === 0 
         ? <p>Todavía no les has dado like a ninguna fotografía</p>
         : favs.map(fav => (
             <Link key={fav.id} to={`/detail/${fav.id}`}>

@@ -18,6 +18,7 @@ export const NotRegisterUser = () => {
               const variables = { input }
               register({ variables }).then(({ data }) => {
                 const { signup } = data
+                console.log(signup)
                 activateAuth(signup)
               })
             }
@@ -42,6 +43,7 @@ export const NotRegisterUser = () => {
               const variables = { input }
               login({ variables }).then(({ data }) => {
                 const { login } = data
+                console.log(login)
                 activateAuth(login)
               })
             }
