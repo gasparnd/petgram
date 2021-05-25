@@ -35,7 +35,7 @@ export const UserForm = ({ title, onSubmit, disabled, error, isLogin}) => {
             onChange={ password.onChange } 
             disabled={disabled}
           />
-          <SubmitButton disabled={disabled}>{title}</SubmitButton>
+          <SubmitButton type='submit' disabled={disabled}>{title}</SubmitButton>
         </Form>
         {
   	      error 

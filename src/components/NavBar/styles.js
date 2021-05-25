@@ -13,7 +13,7 @@ export const Nav = styled.nav`
   left: 0;
   margin: 0 auto;
   max-width: 500px;
-  rigth: 0;
+  right: 0;
   position: fixed;
   width: 100%;
   z-index: 2000;  

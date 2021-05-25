@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from '@reach/router'
+import PropTypes from 'prop-types'
 
 import { useNearScreen } from '../../hooks/useNearScreen'
 
@@ -52,3 +53,10 @@ export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_PHOTO, loading =
     </Article>
   )
 } 
+
+PhotoCard.propTypes = {
+  id: PropTypes.string,
+  liked: PropTypes.bool,
+  src: PropTypes.string,
+  likes: PropTypes.number
+}
